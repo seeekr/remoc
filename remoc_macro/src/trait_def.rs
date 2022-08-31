@@ -638,11 +638,13 @@ impl TraitDef {
         }
 
         // Allowing cloning if object is accessed by reference only.
-        let clone = if !self.is_taking_ref_mut() && !self.is_taking_value() {
+        // let clone = if !self.is_taking_ref_mut() && !self.is_taking_value() {
+        let clone =
             quote! {#[derive(Clone)]}
-        } else {
-            quote! {}
-        };
+        ;
+        // } else {
+        //     quote! {}
+        // };
 
         let doc = format!("Remote client for [{}].\n\nCan be sent to a remote endpoint.", &ident);
 
